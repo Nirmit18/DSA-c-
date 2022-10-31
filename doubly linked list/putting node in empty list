@@ -1,0 +1,25 @@
+
+#include <iostream>
+
+using namespace std;
+struct node{
+    struct node*prev;
+    int data;
+    struct node *next;
+};
+struct node* addtoempty(struct node* head,int data){
+    struct node* t=(struct node*)malloc(sizeof(struct node));
+    t->prev=NULL;
+    t->data=data;
+    t->next=NULL;
+    head=t;
+    return head;
+}
+int main()
+{
+    struct node* head=NULL;
+    head=addtoempty(head,45);
+    cout<<head->data;
+
+    return 0;
+}
