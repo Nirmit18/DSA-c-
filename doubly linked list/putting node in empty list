@@ -12,8 +12,7 @@ struct node* addtoempty(struct node* head,int data){
     t->prev=NULL;
     t->data=data;
     t->next=NULL;
-    head=t;
-    return head;
+    return t;
 }
 int main()
 {
