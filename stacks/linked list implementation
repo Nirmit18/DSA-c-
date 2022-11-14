@@ -1,0 +1,33 @@
+
+#include <iostream>
+
+using namespace std;
+struct  node{
+    int data;
+    struct node* link;
+}*top=NULL;
+void push(int data)
+{
+  struct node* n=  (struct node*)malloc(sizeof(struct node));
+  n->data=data;
+  n->link=NULL;
+  n->link=top;
+  top=n;
+}
+void print()
+{
+    struct node* temp;
+    temp=top;
+    while(temp){
+        cout<<temp->data<<" ";
+        temp=temp->link;
+    }
+}
+
+int main()
+{
+push(45);
+push(66);
+print();
+    return 0;
+}
