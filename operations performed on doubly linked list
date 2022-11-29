@@ -1,0 +1,82 @@
+
+
+#include <iostream>
+
+using namespace std;
+struct node{
+    int data;
+    node* next;
+    node* prev;
+};
+    struct node* head=NULL;
+
+
+struct node* addtoempty(struct node* head,int data){
+    struct node* t=new node;
+    t->data=data;
+    t->next=NULL;
+    t->prev=NULL;
+    head=t;
+    return head;
+}
+
+struct node* pushatfront(struct node* head,int data)
+{
+     struct node* temp=new node;
+    temp->data=data;
+    temp->next=NULL;
+    temp->prev=NULL;
+    temp->next=head;
+    head->prev=temp;
+    head=temp;
+    return head;
+}
+struct node* pushatback(struct node* head,int data){
+         struct node* p=new node;
+         p->data=data;
+         p->next=NULL;
+         p->prev=NULL;
+         struct node* ptr=head;
+         while(ptr->next!=NULL){
+             ptr=ptr->next;
+         }
+         ptr->next=p;
+
+         return head;
+         
+         
+
+}
+void popfront(){
+    struct node* a=head;
+    head=head->next;
+    free(a);
+}
+
+void popback(){
+     struct node* b=head;
+     while(b->next->next!=NULL){
+         b=b->next;
+     }
+     b->next=NULL;
+}
+
+int main()
+{
+    head=addtoempty(head,45);
+    head= pushatfront(head,55);
+    head=pushatback(head,65);
+    popfront();
+    popback();
+
+
+
+
+    struct node* ptr=head;
+    while(ptr!=NULL)
+    {
+        cout<<ptr->data<<" ";
+        ptr=ptr->next;
+    }
+    return 0;
+}
