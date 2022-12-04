@@ -1,0 +1,80 @@
+
+
+#include <iostream>
+
+using namespace std;
+struct node{
+    int coeff,power;
+    node* next;
+};
+node* addnode(node* start,int coeff,int power){
+    node* t=new node;
+    t->coeff=coeff;
+    t->power=power;
+    t->next=NULL;
+    
+    if(start==NULL){
+        return t;
+    }
+    
+    node* ptr=start;
+    while(ptr->next!=NULL){
+        ptr=ptr->next;
+    }
+    ptr->next=t;
+    
+    return start;
+    
+}
+node* multiply(node* head1,node* head2,node* head3)
+{
+    node* ptr1,*ptr2;
+    ptr1=head1;
+    ptr2=head2;
+    
+    while(ptr1!=NULL){
+        while(ptr2!=NULL){
+            int coeff,power;
+            
+            coeff=ptr1->coeff*ptr2->coeff;
+            power=ptr1->power+ptr2->power;
+            
+            head3=addnode(head3,coeff,power);
+            
+            ptr2=ptr2->next;
+        }
+        ptr2=head2;
+        ptr1=ptr1->next;
+        
+    }
+    return head3;
+}
+  
+void print(node *ptr){
+    while(ptr!=NULL){
+        cout<<ptr->coeff<<"x^"<<ptr->power;
+        if(ptr->next!=NULL && ptr->next->coeff>=0)
+        cout<<"+";
+        ptr=ptr->next;
+    }
+}
+
+int main()
+{
+node *head1=NULL, *head2=NULL, *head3=NULL;
+head1=addnode(head1,3,3);
+head1=addnode(head1,6,1);
+head1=addnode(head1,-9,0);
+
+head2=addnode(head2,9,3);
+head2=addnode(head2,8,2);
+head2=addnode(head2,7,1);
+head2=addnode(head2,2,0);
+
+head3=multiply(head1,head2,head3);
+
+cout<<"the answer is:";
+print(head3);
+    return 0;
+}
+
