@@ -1,0 +1,25 @@
+
+
+#include <iostream>
+
+using namespace std;
+#include<bits/stdc++.h>
+
+int main()
+{
+int a[5];
+int i;
+for(i=0;i<5;i++){
+    cin>>a[i];
+}
+map<int,int>v;
+for(i=0;i<5;i++){
+    v[a[i]]++;
+}
+map<int,int>::iterator it;
+for(it=v.begin();it!=v.end();it++){
+    cout<<it->second<<endl;
+}
+
+ return 0;
+}
