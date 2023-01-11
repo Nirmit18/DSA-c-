@@ -23,6 +23,7 @@ struct node {
 
 
 void traversal(struct node *last){
+
     struct node* p;
     p=last->next;
     do{
@@ -37,5 +38,5 @@ int main()
   last=addtoempty(last,45);
   last=addtobeg(last,35);
   traversal(last);
-    return 0;
+   return 0;
 }
